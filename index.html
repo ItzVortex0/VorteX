@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft SMP Gallery</title>
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    form {
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    input[type="file"] {
+      padding: 0.5rem;
+      background: #fff;
+      color: #000;
+      border-radius: 0.5rem;
+      max-width: 200px;
+    }
+    button {
+      background: #ff9800;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      transition: transform 0.3s, background 0.3s;
+    }
+    button:hover {
+      background: #e68900;
+      transform: scale(1.05);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .gallery img:hover {
+      transform: scale(1.08);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      button { width: 100%; }
+      input[type="file"] { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Peaktopia</h1>
+    <p>Share your best moments from the SMP!</p>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Upload</button>
+    </form>
+  </header>
+
+  <section class="gallery" id="gallery"></section>
+</body>
+</html>
